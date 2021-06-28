@@ -6,7 +6,7 @@ This repository can be used on its own but is better used along with: https://gi
 Add the following Workflow File to your repository in the path `.github/workflows/publish-gh-pages.yml`
 
 
-```
+```yml
 name: Publish Github Pages
 
 jobs:
