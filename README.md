@@ -28,7 +28,7 @@ jobs:
               with:
                   node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
             - uses: MetaMask/action-publish-gh-pages@0.0.1
-              inputs: 
+              with: 
                 directory: public
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
