@@ -1,0 +1,15 @@
+name: "Create Release PR"
+description: "Create Release Pull Request when new branch is created matching branch-prefix"
+inputs:
+  directory:
+    description: 'A directory to publish to github pages'
+    required: true
+  release-branch-prefix:
+    description: 'The prefix used for branches of release PRs.'
+    default: 'release/'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: ${{ github.action_path }}/run.sh ${{ inputs.directory }} ${{ inputs.release-branch-prefix }}
