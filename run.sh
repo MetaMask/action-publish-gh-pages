@@ -16,7 +16,6 @@ fi
 git config user.name github-actions
 git config user.email github-actions@github.com
 
-cd $GITHUB_ACTION_PATH;
 yarn setup
 git worktree add $DIRECTORY gh-pages
 yarn build
