@@ -17,6 +17,13 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn setup
+if git branch gh-pages
+  then
+    echo "Created branch gh-pages"
+  else
+    echo "gh-pages branch already created"
+fi
+
 git worktree add $DIRECTORY gh-pages
 yarn build
 cd $DIRECTORY
