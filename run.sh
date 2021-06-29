@@ -5,6 +5,7 @@ set -e
 set -o pipefail
 
 DIRECTORY="${1}"
+CURRENT_BRANCH=$(git branch --show-current)
 export PREFIX=${2}
 export NEW_VERSION="${GITHUB_HEAD_REF#$PREFIX}"
 
@@ -21,7 +22,7 @@ if git checkout --orphan gh-pages
   then
     git reset --hard
     git commit --allow-empty -m "Initial gh-pages commit"
-    git checkout $GITHUB_HEAD_REF
+    git checkout $CURRENT_BRANCH
     echo "Created branch gh-pages"
   else
     echo "gh-pages branch already created"
