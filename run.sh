@@ -17,9 +17,9 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn setup
-if git branch gh-pages
+git branch gh-pages
+if git checkout --orphan gh-pages
   then
-    git checkout --orphan gh-pages
     git reset --hard
     git commit --allow-empty -m "Initial gh-pages commit"
     echo "Created branch gh-pages"
