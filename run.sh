@@ -17,7 +17,6 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn setup
-git branch gh-pages
 if git checkout --orphan gh-pages
   then
     git reset --hard
