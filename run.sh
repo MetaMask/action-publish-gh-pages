@@ -21,7 +21,7 @@ if git checkout --orphan gh-pages
   then
     git reset --hard
     git commit --allow-empty -m "Initial gh-pages commit"
-    git checkout -
+    git checkout $GITHUB_HEAD_REF
     echo "Created branch gh-pages"
   else
     echo "gh-pages branch already created"
