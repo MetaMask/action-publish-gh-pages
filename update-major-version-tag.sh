@@ -4,33 +4,28 @@ set -x
 set -e
 set -o pipefail
 
-DIRECTORY="${1}"
-CURRENT_BRANCH=$(git branch --show-current)
-export PREFIX=${2}
-export NEW_VERSION="${GITHUB_HEAD_REF#$PREFIX}"
+RELEASE_VERSION="${1}"
 
-if [[ -z $DIRECTORY ]]; then
-  echo "Error: No Directory specified."
+if [[ -z $RELEASE_VERSION ]]; then
+  echo "Error: No release version specified."
   exit 1
 fi
+
+MAJOR_VERSION_TAG="v${RELEASE_VERSION/\.*/}"
 
 git config user.name github-actions
 git config user.email github-actions@github.com
 
-yarn setup
-if git checkout --orphan gh-pages
-  then
-    git reset --hard
-    git commit --allow-empty -m "Initial gh-pages commit"
-    git checkout "${CURRENT_BRANCH}"
-    echo "Created branch gh-pages"
-  else
-    echo "gh-pages branch already created"
+if git show-ref --tags "$MAJOR_VERSION_TAG" --quiet; then
+  echo "Tag ${MAJOR_VERSION_TAG} exists, attempting to delete it."
+  git tag --delete "$MAJOR_VERSION_TAG"
+  git push --delete origin "$MAJOR_VERSION_TAG"
+else 
+  echo "Tag ${MAJOR_VERSION_TAG} does not exist, creating it from scratch."
 fi
 
-git worktree add "${DIRECTORY}" gh-pages
-yarn build
-cd "$DIRECTORY"
-git add --all
-git commit -m "gh-pages deploy - ${NEW_VERSION}"
-git push -f origin gh-pages
+git tag "$MAJOR_VERSION_TAG" HEAD
+git push --tags
+echo "Updated shorthand major version tag."
+
+echo "::set-output name=MAJOR_VERSION_TAG::$MAJOR_VERSION_TAG"
