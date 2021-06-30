@@ -9,7 +9,7 @@ Add the following Workflow File to your repository in the path `.github/workflow
 This action makes a few assumptions:
 
 - the package using this action is using `yarn`
-- the package has a command calld `build`
+- the package has a command called `build`
 - `build` should be run before publishing
 - no other commands are required before publishing
 - the repossitory has no existing `gh-pages` branch
