@@ -6,6 +6,16 @@ This repository can be used on its own but is better used along with: https://gi
 Add the following Workflow File to your repository in the path `.github/workflows/publish-gh-pages.yml`
 
 
+## Usage
+
+This action makes a few assumptions:
+
+- the package using this action is using `yarn`
+- the package has a command calld `build`
+- `build` should be run before publishing
+- no other commands are required before publishing
+
+
 ```yml
 name: Publish Github Pages
 
