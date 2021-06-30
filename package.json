@@ -1,6 +1,6 @@
 {
   "name": "@metamask/action-publish-gh-pages",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MetaMask/action-publish-gh-pages.git"
