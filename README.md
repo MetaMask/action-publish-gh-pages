@@ -10,7 +10,7 @@ Add the following Workflow File to your repository in the path `.github/workflow
 name: Publish Github Pages
 
 jobs:
-    publish-gh-release:
+    publish-gh-pages:
         if: |
           github.event.pull_request.merged == true &&
           startsWith(github.event.pull_request.head.ref, 'release/')
