@@ -1,5 +1,5 @@
-name: "Create Release PR"
-description: "Create Release Pull Request when new branch is created matching branch-prefix"
+name: "Publish Github Pages"
+description: "Publish a static website to Github Pages"
 inputs:
   directory:
     description: 'A directory to publish to github pages'
