@@ -6,4 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/MetaMask/action-publish-gh-pages
+## [0.0.11]
+### Uncategorized
+- Create CHANGELOG.md
+- add empty package.json
+- Update publish-release.yml
+- Merge branch 'main' of github.com:MetaMask/action-publish-gh-pages
+- add release workflow
+- Update README.md
+
+[Unreleased]: https://github.com/MetaMask/action-publish-gh-pages/compare/v0.0.11...HEAD
+[0.0.11]: https://github.com/MetaMask/action-publish-gh-pages/releases/tag/v0.0.11
