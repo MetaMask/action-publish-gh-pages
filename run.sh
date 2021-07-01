@@ -22,15 +22,15 @@ if git checkout --orphan gh-pages
   then
     git reset --hard
     git commit --allow-empty -m "Initial gh-pages commit"
-    git checkout $CURRENT_BRANCH
+    git checkout "${CURRENT_BRANCH}"
     echo "Created branch gh-pages"
   else
     echo "gh-pages branch already created"
 fi
 
-git worktree add $DIRECTORY gh-pages
+git worktree add "${DIRECTORY}" gh-pages
 yarn build
-cd $DIRECTORY
+cd "${DIRECTORY}"
 git add --all
 git commit -m "gh-pages deploy - ${NEW_VERSION}"
 git push -f origin gh-pages
