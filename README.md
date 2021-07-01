@@ -12,7 +12,7 @@ This action makes a few assumptions:
 - the package has a command called `build`
 - `build` should be run before publishing
 - no other commands are required before publishing
-- the repossitory has no existing `gh-pages` branch
+- the repository has no existing `gh-pages` branch
 - the branch used is `gh-pages`
 - the `directory` given must not exist before `build`
 
