@@ -6,8 +6,9 @@ set -o pipefail
 
 DIRECTORY="${1}"
 CURRENT_BRANCH=$(git branch --show-current)
-export PREFIX=${2}
-export NEW_VERSION="${GITHUB_HEAD_REF#$PREFIX}"
+PREFIX=${2}
+NPM_COMMAND=${3}
+NEW_VERSION="${GITHUB_HEAD_REF#$PREFIX}"
 
 if [[ -z $DIRECTORY ]]; then
   echo "Error: No Directory specified."
@@ -17,7 +18,6 @@ fi
 git config user.name github-actions
 git config user.email github-actions@github.com
 
-yarn setup
 if git checkout --orphan gh-pages
   then
     git reset --hard
@@ -29,7 +29,7 @@ if git checkout --orphan gh-pages
 fi
 
 git worktree add "${DIRECTORY}" gh-pages
-yarn build
+yarn "${NPM_COMMAND}"
 cd "${DIRECTORY}"
 git add --all
 git commit -m "gh-pages deploy - ${NEW_VERSION}"
