@@ -8,9 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0]
 ### Added
-- add build command option ([#11](https://github.com/MetaMask/action-publish-gh-pages/pull/11))
+- Add build command option ([#11](https://github.com/MetaMask/action-publish-gh-pages/pull/11))
 ### Removed
-- removed `setup` from being called
+- Remove `setup` npm script call ([#11](https://github.com/MetaMask/action-publish-gh-pages/pull/11))
 
 ## [1.0.1]
 ### Uncategorized
