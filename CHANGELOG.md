@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [1.1.0]
-### Uncategorized
+### Added
 - add build command option ([#11](https://github.com/MetaMask/action-publish-gh-pages/pull/11))
-- Repo cleanup ([#9](https://github.com/MetaMask/action-publish-gh-pages/pull/9))
+### Removed
+- removed `setup` from being called
 
 ## [1.0.1]
 ### Uncategorized
