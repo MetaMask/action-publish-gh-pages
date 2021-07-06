@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [1.1.1]
-### Uncategorized
+### Changed
 - change publish-release to use fetch-depth: 0 + base ref ([#13](https://github.com/MetaMask/action-publish-gh-pages/pull/13))
 
 ## [1.1.0]
