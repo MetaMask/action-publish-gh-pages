@@ -2,7 +2,11 @@ name: "Publish Github Pages"
 description: "Publish a static website to Github Pages"
 inputs:
   directory:
-    description: 'A directory to publish to github pages'
+    description: 'A directory to publish to github pages.'
+    required: true
+  npm-build-command:
+    description: 'Command used to build the npm project. Defaults to "build"'
+    default: 'build'
     required: true
   release-branch-prefix:
     description: 'The prefix used for branches of release PRs.'
@@ -12,4 +16,4 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: ${{ github.action_path }}/run.sh ${{ inputs.directory }} ${{ inputs.release-branch-prefix }}
+      run: ${{ github.action_path }}/run.sh '${{ inputs.directory }}' '${{ inputs.release-branch-prefix }}' '${{ inputs.npm-build-command }}'
