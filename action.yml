@@ -16,4 +16,4 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: ${{ github.action_path }}/run.sh ${{ inputs.directory }} ${{ inputs.release-branch-prefix }} ${{ inputs.npm-build-command }}
+      run: ${{ github.action_path }}/run.sh "${{ inputs.directory }}" "${{ inputs.release-branch-prefix }}" "${{ inputs.npm-build-command }}"
