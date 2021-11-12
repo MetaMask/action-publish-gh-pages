@@ -31,8 +31,9 @@ fi
 git worktree add "${DIRECTORY}" gh-pages
 yarn "${NPM_COMMAND}"
 cd "${DIRECTORY}"
-cp -r . ${TMP}/${NEW_VERSION}/
-cp -r ${TMP}/${NEW_VERSION}/ ${NEW_VERSION}/
+TMP_PATH=$(mktemp -d)
+cp -r . ${TMP_PATH}/${NEW_VERSION}/
+cp -r ${TMP_PATH}/${NEW_VERSION}/ ${NEW_VERSION}/
 git add --all
 git commit -m "gh-pages deploy - ${NEW_VERSION}"
 git push -f origin gh-pages
