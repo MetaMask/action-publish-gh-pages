@@ -12,8 +12,12 @@ inputs:
     description: 'The prefix used for branches of release PRs.'
     default: 'release/'
     required: true
+  directory:
+    description: 'A destination directory to publish to github pages branch.'
+    required: true
+    default: '.'
 runs:
   using: "composite"
   steps:
     - shell: bash
-      run: ${{ github.action_path }}/run.sh '${{ inputs.directory }}' '${{ inputs.release-branch-prefix }}' '${{ inputs.npm-build-command }}'
+      run: ${{ github.action_path }}/run.sh '${{ inputs.directory }}' '${{ inputs.release-branch-prefix }}' '${{ inputs.npm-build-command }}' '${{ inputs.destination }}'
