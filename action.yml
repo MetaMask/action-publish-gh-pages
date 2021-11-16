@@ -12,7 +12,7 @@ inputs:
     description: 'The prefix used for branches of release PRs.'
     default: 'release/'
     required: true
-  directory:
+  destination:
     description: 'A destination directory to publish to github pages branch.'
     required: true
     default: '.'
