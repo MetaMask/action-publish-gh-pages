@@ -21,6 +21,9 @@ if [[ -z $DESTINATION ]]; then
   exit 1
 fi
 
+git config user.name github-actions
+git config user.email github-actions@github.com
+
 yarn "${NPM_COMMAND}"
 git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 npx gh-pages --dist "${DIRECTORY}" --message "gh-pages deploy - ${NEW_VERSION}" || abort "gh-pages failed to deploy"

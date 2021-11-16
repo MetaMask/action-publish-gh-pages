@@ -9,7 +9,5 @@
     "url": "https://github.com/MetaMask/action-publish-gh-pages/issues"
   },
   "homepage": "https://github.com/MetaMask/action-publish-gh-pages#readme",
-  "devDependencies": {
-    "gh-pages": "^3.2.3"
-  }
+  "devDependencies": {}
 }
