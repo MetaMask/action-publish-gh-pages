@@ -58,7 +58,7 @@ if git checkout --orphan gh-pages
   then
     git reset --hard
     git commit --allow-empty -m "Initial gh-pages commit"
-    git checkout "${CURRENT_BRANCH}"
+    git checkout "$(git branch --show-current)"
     echo "Created branch gh-pages"
   else
     echo "gh-pages branch already created"
