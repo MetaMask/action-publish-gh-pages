@@ -25,4 +25,4 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn "${NPM_COMMAND}"
-yarn gh-pages --dist "${DIRECTORY}" --message "gh-pages deploy - ${NEW_VERSION}" || abort "gh-pages failed to deploy"
+npx gh-pages --dist "${DIRECTORY}" --message "gh-pages deploy - ${NEW_VERSION}" || abort "gh-pages failed to deploy"
