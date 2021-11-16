@@ -26,4 +26,4 @@ git config user.email github-actions@github.com
 
 yarn "${NPM_COMMAND}"
 git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-npx gh-pages --dist "${DIRECTORY}" --dest "${DESTINATION}" --message "gh-pages deploy - ${NEW_VERSION}" || abort "gh-pages failed to deploy"
+npx gh-pages -a --dist "${DIRECTORY}" --dest "${DESTINATION}" --message "gh-pages deploy - ${NEW_VERSION}"
