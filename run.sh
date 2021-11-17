@@ -54,6 +54,7 @@ fi
 
 git config user.name github-actions
 git config user.email github-actions@github.com
+git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 yarn "${PACKAGE_BUILD_COMMAND}"
 
@@ -67,9 +68,6 @@ if git ls-remote --quiet . origin/gh-pages
     git checkout "${CURRENT_BRANCH}"
     echo "Created branch gh-pages"  
 fi
-
-git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-
 
 npx gh-pages@3.0.0 \
   "$ADD" \
