@@ -56,9 +56,8 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn "${PACKAGE_BUILD_COMMAND}"
-exists_in_remote=$(git ls-remote --exit-code . origin/gh-pages)
 
-if [[ -z "${exists_in_remote}" ]]; then
+if git ls-remote --quiet . origin/gh-pages then
   echo "gh-pages branch already created"
 else
   git checkout --orphan gh-pages
