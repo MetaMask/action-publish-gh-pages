@@ -49,14 +49,12 @@ if [[ "$DESTINATION_DIRECTORY" = "." ]]; then
 else
   # "--add" prevents existing files from being deleted.
   ADD="--add"
+  # Edit package.json in place to reflect the new homepage url
+  npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
 
 git config user.name github-actions
 git config user.email github-actions@github.com
-
-
-# Edit package.json in place to reflect the new homepage url
-npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 
 yarn "${PACKAGE_BUILD_COMMAND}"
 
