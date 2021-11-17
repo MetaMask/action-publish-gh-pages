@@ -50,7 +50,6 @@ if [[ "$DESTINATION_DIRECTORY" = "." ]]; then
 else
   # "--add" prevents existing files from being deleted.
   ADD="--add"
-  # Edit package.json in place to reflect the new homepage url
 fi
 
 git config user.name github-actions
