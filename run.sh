@@ -56,7 +56,7 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
-yarn "${PACKAGE_BUILD_COMMAND}"
+
 branch_exists=$(git ls-remote --quiet . origin/gh-pages)
 
 if [ -n "${branch_exists}" ]
@@ -71,6 +71,8 @@ if [ -n "${branch_exists}" ]
     echo "Created branch gh-pages"  
 fi
 
+yarn "${PACKAGE_BUILD_COMMAND}"
+
 if [ -n "${ADD}" ]
   then
     echo ""
@@ -78,7 +80,7 @@ if [ -n "${ADD}" ]
     npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
 
-npx gh-pages@3.0.0 \
+npx gh-pages@3.2.3 \
   "$ADD" \
   --dist "${SOURCE_DIRECTORY}" \
   --dest "${DESTINATION_DIRECTORY}" \
