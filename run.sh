@@ -54,8 +54,9 @@ fi
 git config user.name github-actions
 git config user.email github-actions@github.com
 
+
 # Edit package.json in place to reflect the new homepage url
-json -I -f package.json -e "this.homepage=\"https://metamask.github.io/actions-gh-pages-test-repo/${DESTINATION_DIRECTORY}/\""
+npx json -I -f package.json -e "this.homepage=\"https://metamask.github.io/actions-gh-pages-test-repo/${DESTINATION_DIRECTORY}/\""
 
 yarn "${PACKAGE_BUILD_COMMAND}"
 
