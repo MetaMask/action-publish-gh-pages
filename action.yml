@@ -18,6 +18,10 @@ inputs:
     description: 'The directory within the GitHub Pages branch to place the source files.'
     required: true
     default: '.'
+  commit-message:
+    description: 'Commit Message'
+    required: true
+    default: 'Deploy to GitHub Pages'
 
 runs:
   using: "composite"
@@ -28,4 +32,5 @@ runs:
         '${{ inputs.source-directory }}' \
         '${{ inputs.release-branch-prefix }}' \
         '${{ inputs.build-command }}' \
-        '${{ inputs.destination-directory }}'
+        '${{ inputs.destination-directory }}' \
+        '${{ inputs.commit-message }}'
