@@ -30,7 +30,6 @@ runs:
       run: |
         ${{ github.action_path }}/run.sh \
         '${{ inputs.source-directory }}' \
-        '${{ inputs.release-branch-prefix }}' \
         '${{ inputs.build-command }}' \
         '${{ inputs.destination-directory }}' \
         '${{ inputs.commit-message }}'
