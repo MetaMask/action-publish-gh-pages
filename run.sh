@@ -67,6 +67,7 @@ if [ -n "${branch_exists}" ]
     git reset --hard
 
     git commit --allow-empty -m "Initial gh-pages commit"
+    git push origin gh-pages
     git checkout "${CURRENT_BRANCH}"
     echo "Created branch gh-pages"  
 fi
