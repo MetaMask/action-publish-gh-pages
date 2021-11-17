@@ -57,7 +57,7 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn "${PACKAGE_BUILD_COMMAND}"
-local existed_in_remote=$(git ls-remote --heads origin ${branch})
+local existed_in_remote=$(git ls-remote --heads origin gh-pages)
 
 if [[ -z ${existed_in_remote} ]]; then
   then
