@@ -15,11 +15,6 @@ if [[ -z $SOURCE_DIRECTORY ]]; then
   exit 1
 fi
 
-if [[ -z $COMMIT_MESSAGE ]]; then
-  echo "Error: No commit message specified."
-  exit 1
-fi
-
 if [[ -z $PACKAGE_BUILD_COMMAND ]]; then
   echo "Error: No build command name specified."
   exit 1
@@ -30,15 +25,11 @@ if [[ -z $DESTINATION_DIRECTORY ]]; then
   exit 1
 fi
 
-if [[ -z $NEW_VERSION ]]; then
-  echo "Error: Failed to extract new version from release branch name."
+if [[ -z $COMMIT_MESSAGE ]]; then
+  echo "Error: No commit message specified."
   exit 1
 fi
 
-if [[ -z $NEW_VERSION ]]; then
-  echo "Error: Failed to extract new version from release branch name."
-  exit 1
-fi
 
 # If publishing directly to the root directory, erase all existing files on the
 # gh-pages branch. Otherwise, do not modify any files outside of the destination
