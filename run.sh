@@ -57,8 +57,9 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 
 yarn "${PACKAGE_BUILD_COMMAND}"
+local existed_in_remote=$(git ls-remote --heads origin ${branch})
 
-if git branch --list gh-pages
+if [[ -z ${existed_in_remote} ]]; then
   then
     echo "gh-pages branch already created"
   else
