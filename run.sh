@@ -57,8 +57,9 @@ git config user.email github-actions@github.com
 git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 yarn "${PACKAGE_BUILD_COMMAND}"
+branch_exists=$(git ls-remote --quiet . origin/gh-pages)
 
-if git ls-remote --quiet . origin/gh-pages
+if [ -n "${branch_exists}" ]
   then
     echo "gh-pages branch already created"
   else
