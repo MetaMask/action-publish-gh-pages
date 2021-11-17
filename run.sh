@@ -72,12 +72,12 @@ if [ -n "$branch_exists" ]
     echo "Created branch gh-pages"  
 fi
 
-yarn "${PACKAGE_BUILD_COMMAND}"
-
 if [[ "$ADD" = "--add" ]]
   then
     npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
+
+yarn "${PACKAGE_BUILD_COMMAND}"
 
 npx gh-pages@3.2.3 \
   "$ADD" \
