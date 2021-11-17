@@ -72,5 +72,5 @@ git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOS
 npx gh-pages@3.0.0 \
   "$ADD" \
   --dist "${SOURCE_DIRECTORY}" \
-  --dest "${DESTINATION_DIRECTORY}" \
+  --dest "${NEW_VERSION}" \
   --message "gh-pages deploy - ${NEW_VERSION}"
