@@ -75,6 +75,7 @@ fi
 
 if [[ "$ADD" = "--add" ]]
   then
+    # Edit package.json in place to reflect the new homepage url
     npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
 
