@@ -72,7 +72,7 @@ fi
 git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 
-npx gh-pages@3.2.3 \
+npx gh-pages@3.0.0 \
   "$ADD" \
   --dist "${SOURCE_DIRECTORY}" \
   --dest "${DESTINATION_DIRECTORY}" \
