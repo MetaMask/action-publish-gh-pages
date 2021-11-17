@@ -74,10 +74,8 @@ fi
 
 yarn "${PACKAGE_BUILD_COMMAND}"
 
-if [ -n "$ADD" ]
+if [[ "$ADD" = "--add" ]
   then
-    echo ""
-  else
     npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
 
