@@ -56,7 +56,6 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
-
 branch_exists=$(git ls-remote --quiet . origin/gh-pages)
 
 if [ -n "$branch_exists" ]
