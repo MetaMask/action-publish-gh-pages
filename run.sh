@@ -7,6 +7,7 @@ SOURCE_DIRECTORY="${1}"
 RELEASE_BRANCH_PREFIX="${2}"
 PACKAGE_BUILD_COMMAND="${3}"
 DESTINATION_DIRECTORY="${4}"
+CURRENT_BRANCH=$(git branch --show-current)
 
 if [[ -z $SOURCE_DIRECTORY ]]; then
   echo "Error: No source directory specified."
@@ -49,7 +50,6 @@ else
   # "--add" prevents existing files from being deleted.
   ADD="--add"
   # Edit package.json in place to reflect the new homepage url
-  npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
 
 git config user.name github-actions
@@ -65,9 +65,17 @@ if [ -n "${branch_exists}" ]
   else
     git checkout --orphan gh-pages
     git reset --hard
+
     git commit --allow-empty -m "Initial gh-pages commit"
     git checkout "${CURRENT_BRANCH}"
     echo "Created branch gh-pages"  
+fi
+
+if [ -n "${ADD}" ]
+  then
+    echo ""
+  else
+    npx json -I -f package.json -e "this.homepage=this.homepage + \"${DESTINATION_DIRECTORY}/\""
 fi
 
 npx gh-pages@3.0.0 \
