@@ -59,7 +59,7 @@ git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOS
 
 branch_exists=$(git ls-remote --quiet . origin/gh-pages)
 
-if [ -n "${branch_exists}" ]
+if [ -n "$branch_exists" ]
   then
     echo "gh-pages branch already created"
   else
@@ -74,7 +74,7 @@ fi
 
 yarn "${PACKAGE_BUILD_COMMAND}"
 
-if [ -n "${ADD}" ]
+if [ -n "$ADD" ]
   then
     echo ""
   else
