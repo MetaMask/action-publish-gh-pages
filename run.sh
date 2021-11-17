@@ -5,9 +5,9 @@ set -e
 set -o pipefail
 
 SOURCE_DIRECTORY="${1}"
-RELEASE_BRANCH_PREFIX="${2}"
-PACKAGE_BUILD_COMMAND="${3}"
-DESTINATION_DIRECTORY="${4}"
+PACKAGE_BUILD_COMMAND="${2}"
+DESTINATION_DIRECTORY="${3}"
+COMMIT_MESSAGE="${4}"
 CURRENT_BRANCH=$(git branch --show-current)
 
 if [[ -z $SOURCE_DIRECTORY ]]; then
@@ -15,8 +15,8 @@ if [[ -z $SOURCE_DIRECTORY ]]; then
   exit 1
 fi
 
-if [[ -z $RELEASE_BRANCH_PREFIX ]]; then
-  echo "Error: No release branch prefix specified."
+if [[ -z $COMMIT_MESSAGE ]]; then
+  echo "Error: No commit message specified."
   exit 1
 fi
 
@@ -29,8 +29,6 @@ if [[ -z $DESTINATION_DIRECTORY ]]; then
   echo "Error: No destination directory specified."
   exit 1
 fi
-
-NEW_VERSION="${GITHUB_HEAD_REF#"$RELEASE_BRANCH_PREFIX"}"
 
 if [[ -z $NEW_VERSION ]]; then
   echo "Error: Failed to extract new version from release branch name."
@@ -85,4 +83,4 @@ npx gh-pages@3.2.3 \
   "$ADD" \
   --dist "${SOURCE_DIRECTORY}" \
   --dest "${DESTINATION_DIRECTORY}" \
-  --message "gh-pages deploy - ${NEW_VERSION}"
+  --message "${COMMIT_MESSAGE}"
