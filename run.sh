@@ -55,17 +55,16 @@ git config user.name github-actions
 git config user.email github-actions@github.com
 yarn "${PACKAGE_BUILD_COMMAND}"
 
-if git checkout --orphan gh-pages
+if git branch --list gh-pages
   then
+    echo "gh-pages branch already created"
+  else
+    git checkout --orphan gh-pages
     git reset --hard
     git commit --allow-empty -m "Initial gh-pages commit"
-    git push -f origin gh-pages
-    git checkout "$(git branch --show-current)"
-    echo "Created branch gh-pages"
-  else
-    echo "gh-pages branch already created"
+    git checkout "${CURRENT_BRANCH}"
+    echo "Created branch gh-pages"  
 fi
-
 
 git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
