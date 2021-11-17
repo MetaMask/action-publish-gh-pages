@@ -60,14 +60,13 @@ yarn "${PACKAGE_BUILD_COMMAND}"
 exists_in_remote=$(git ls-remote --heads origin gh-pages)
 
 if [[ -z ${exists_in_remote} ]]; then
-  then
-    echo "gh-pages branch already created"
-  else
-    git checkout --orphan gh-pages
-    git reset --hard
-    git commit --allow-empty -m "Initial gh-pages commit"
-    git checkout "${CURRENT_BRANCH}"
-    echo "Created branch gh-pages"  
+  echo "gh-pages branch already created"
+else
+  git checkout --orphan gh-pages
+  git reset --hard
+  git commit --allow-empty -m "Initial gh-pages commit"
+  git checkout "${CURRENT_BRANCH}"
+  echo "Created branch gh-pages"  
 fi
 
 git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
