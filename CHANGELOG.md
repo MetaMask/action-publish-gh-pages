@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0]
 ### Added
-- Versioned deployment ([#16](https://github.com/MetaMask/action-publish-gh-pages/pull/16))
-- Default npm-build-command value to README ([#15](https://github.com/MetaMask/action-publish-gh-pages/pull/15))
+- Versioned deployment, new inputs ([#16](https://github.com/MetaMask/action-publish-gh-pages/pull/16))
+
+### Changed
+- **BREAKING:** Change existing input names ([#16](https://github.com/MetaMask/action-publish-gh-pages/pull/16))
+  - See the README and `action.yml` as of this release for details.
 
 ## [1.1.1]
 ### Changed
