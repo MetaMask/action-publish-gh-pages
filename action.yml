@@ -19,7 +19,7 @@ inputs:
     required: true
     default: '.'
   commit-message:
-    description: 'Commit Message'
+    description: 'The messages of the commit to the gh-pages branch.'
     required: true
     default: 'Deploy to GitHub Pages'
 
