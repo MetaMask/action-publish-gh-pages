@@ -41,11 +41,13 @@ else
   ADD="--add"
 fi
 
+REPO="https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
 git config user.name github-actions
 git config user.email github-actions@github.com
-git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git remote set-url origin "$REPO"
 
-branch_exists=$(git ls-remote --quiet . origin/gh-pages)
+branch_exists=$(git ls-remote --quiet --heads "$REPO" gh-pages)
 
 if [[ -n "$branch_exists" ]]
   then
