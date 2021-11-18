@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [2.0.0]
-### Uncategorized
-- Added Version ([#16](https://github.com/MetaMask/action-publish-gh-pages/pull/16))
-- added default npm-build-command value to README ([#15](https://github.com/MetaMask/action-publish-gh-pages/pull/15))
+### Added
+- Version ([#16](https://github.com/MetaMask/action-publish-gh-pages/pull/16))
+- Default npm-build-command value to README ([#15](https://github.com/MetaMask/action-publish-gh-pages/pull/15))
 
 ## [1.1.1]
 ### Changed
