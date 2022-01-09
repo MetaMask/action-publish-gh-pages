@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-      - uses: MetaMask/action-publish-gh-pages@v1
+      - uses: MetaMask/action-publish-gh-pages@v2
         with:
           source-directory: public
           # This will commit the contents of "public" in the source branch to
