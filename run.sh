@@ -4,11 +4,24 @@ set -x
 set -e
 set -o pipefail
 
-SOURCE_DIRECTORY="${1}"
-PACKAGE_BUILD_COMMAND="${2}"
-DESTINATION_DIRECTORY="${3}"
-COMMIT_MESSAGE="${4}"
+DEPLOY_SCRIPT_PATH="${1}"
+JSON_SCRIPT_PATH="${2}"
+SOURCE_DIRECTORY="${3}"
+PACKAGE_BUILD_COMMAND="${4}"
+DESTINATION_DIRECTORY="${5}"
+COMMIT_MESSAGE="${6}"
 CURRENT_BRANCH=$(git branch --show-current)
+
+if [[ -z $DEPLOY_SCRIPT_PATH ]]; then
+  echo "Error: No deploy script specified."
+  exit 1
+fi
+
+if [[ -z $JSON_SCRIPT_PATH ]]; then
+  echo "Error: No json script specified."
+  exit 1
+fi
+
 
 if [[ -z $SOURCE_DIRECTORY ]]; then
   echo "Error: No source directory specified."
@@ -63,13 +76,13 @@ fi
 if [[ "$ADD" = "--add" ]]; then
   # Edit package.json in place to reflect the new homepage url
   # This is required by some build tools, e.g. Webpack
-  npx json -I -f package.json \
+  node "${JSON_SCRIPT_PATH}" -I -f package.json \
     -e "this.homepage=(this.homepage.replace(/\/$/u, '')) + \"/${DESTINATION_DIRECTORY}/\""
 fi
 
 yarn "${PACKAGE_BUILD_COMMAND}"
 
-npx gh-pages@3.2.3 \
+node "${DEPLOY_SCRIPT_PATH}" \
   "$ADD" \
   --dist "${SOURCE_DIRECTORY}" \
   --dest "${DESTINATION_DIRECTORY}" \
