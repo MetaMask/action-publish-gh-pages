@@ -25,6 +25,8 @@ runs:
     - shell: bash
       run: |
         ${{ github.action_path }}/run.sh \
+        '${{ github.action_path }}/dist/gh-pages/index.js' \
+        '${{ github.action_path }}/dist/json/index.js' \
         '${{ inputs.source-directory }}' \
         '${{ inputs.build-command }}' \
         '${{ inputs.destination-directory }}' \
