@@ -7,10 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [2.0.1]
-### Uncategorized
+### Fixed
 - Bundle deployment scripts ([#21](https://github.com/MetaMask/action-publish-gh-pages/pull/21))
-- Fixed README package version ([#19](https://github.com/MetaMask/action-publish-gh-pages/pull/19))
-- add shellcheck action ([#18](https://github.com/MetaMask/action-publish-gh-pages/pull/18))
+  - Runtime installation of dependencies was slow and could introduce unwanted changes in behavior. Now that the scripts are all bundled, no runtime installation takes place.
 
 ## [2.0.0]
 ### Added
