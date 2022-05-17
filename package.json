@@ -1,7 +1,7 @@
 {
   "name": "@metamask/action-publish-gh-pages",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A GitHub action for publishing to a 'gh-pages' branch.",
   "scripts": {
     "setup": "yarn install && yarn allow-scripts",
