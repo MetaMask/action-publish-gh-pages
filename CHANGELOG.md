@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1]
+### Uncategorized
+- Bundle deployment scripts ([#21](https://github.com/MetaMask/action-publish-gh-pages/pull/21))
+- Fixed README package version ([#19](https://github.com/MetaMask/action-publish-gh-pages/pull/19))
+- add shellcheck action ([#18](https://github.com/MetaMask/action-publish-gh-pages/pull/18))
+
 ## [2.0.0]
 ### Added
 - Versioned deployment, new inputs ([#16](https://github.com/MetaMask/action-publish-gh-pages/pull/16))
@@ -33,7 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - added release automation + major version shorthand
 
-[Unreleased]: https://github.com/MetaMask/action-publish-gh-pages/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/MetaMask/action-publish-gh-pages/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/MetaMask/action-publish-gh-pages/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/MetaMask/action-publish-gh-pages/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/MetaMask/action-publish-gh-pages/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/MetaMask/action-publish-gh-pages/compare/v1.0.1...v1.1.0
