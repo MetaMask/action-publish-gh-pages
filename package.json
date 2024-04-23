@@ -21,7 +21,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^5.0.0",
     "json": "^11.0.0"
   }
 }
