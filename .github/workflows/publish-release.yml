@@ -4,10 +4,14 @@ on:
   pull_request:
     types: [closed]
 
+permissions:
+  contents: read
+
 jobs:
   publish-release:
     permissions:
-      contents: write
+      contents: read
+      id-token: write
     # The second argument to startsWith() must match the release-branch-prefix
     # input to this Action. Here, we use the default, "automation_release-".
     if: |
@@ -15,7 +19,7 @@ jobs:
       startsWith(github.event.pull_request.head.ref, 'release/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           # This is to guarantee that the most recent tag is fetched,
           # which we need for updating the shorthand major version tag.
@@ -23,17 +27,22 @@ jobs:
           # We check out the release pull request's base branch, which will be
           # used as the base branch for all git operations.
           ref: ${{ github.event.pull_request.base.ref }}
-      - name: Get Node.js version
-        id: nvm
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-      - uses: actions/setup-node@v2
+
+      - name: Get token
+        id: get-token
+        uses: MetaMask/github-tools/.github/actions/get-token@v1
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-      - uses: MetaMask/action-publish-release@v1
+          token-exchange-url: ${{ vars.TOKEN_EXCHANGE_URL }}
+          permissions: |
+            contents: write
+
+      - uses: MetaMask/action-publish-release@v3
         id: publish-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
+
       - name: Update shorthand major version tag
-        run: ./update-major-version-tag.sh ${{ steps.publish-release.outputs.release-version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: MetaMask/github-tools/.github/actions/update-major-version-tag@v1
+        with:
+          release-version: ${{ steps.publish-release.outputs.release-version }}
+          github-token: ${{ steps.get-token.outputs.token }}
