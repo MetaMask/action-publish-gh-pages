@@ -5,7 +5,10 @@
   "description": "A GitHub action for publishing to a 'gh-pages' branch.",
   "scripts": {
     "setup": "yarn install && yarn allow-scripts",
-    "build": "yarn rimraf 'dist/*' && ncc build \"$(yarn bin gh-pages)\" --out dist/gh-pages && ncc build \"$(yarn bin json)\" --out dist/json"
+    "build": "yarn rimraf 'dist/*' && ncc build \"$(yarn bin gh-pages)\" --out dist/gh-pages && ncc build \"$(yarn bin json)\" --out dist/json",
+    "lint": "yarn lint:changelog",
+    "lint:fix": "yarn lint:changelog --fix",
+    "lint:changelog": "auto-changelog validate --formatter oxfmt"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,9 @@
   "homepage": "https://github.com/MetaMask/action-publish-gh-pages#readme",
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.0.3",
+    "@metamask/auto-changelog": "^6.1.1",
     "@vercel/ncc": "^0.33.4",
+    "oxfmt": "^0.45.0",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
