@@ -2,7 +2,7 @@
   "name": "@metamask/action-publish-gh-pages",
   "private": true,
   "version": "2.0.1",
-  "description": "A GitHub action for publishing to a 'gh-pages' branch.",
+  "description": "A GitHub action for publishing to a 'gh-pages' branch",
   "scripts": {
     "setup": "yarn install && yarn allow-scripts",
     "build": "yarn rimraf 'dist/*' && ncc build \"$(yarn bin gh-pages)\" --out dist/gh-pages && ncc build \"$(yarn bin json)\" --out dist/json"
@@ -15,13 +15,18 @@
     "url": "https://github.com/MetaMask/action-publish-gh-pages/issues"
   },
   "homepage": "https://github.com/MetaMask/action-publish-gh-pages#readme",
-  "devDependencies": {
-    "@lavamoat/allow-scripts": "^2.0.3",
-    "@vercel/ncc": "^0.33.4",
-    "rimraf": "^3.0.2"
-  },
   "dependencies": {
     "gh-pages": "^5.0.0",
     "json": "^11.0.0"
-  }
+  },
+  "devDependencies": {
+    "@lavamoat/allow-scripts": "^2.0.3",
+    "@vercel/ncc": "^0.33.4",
+    "@yarnpkg/types": "^4.0.1",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "packageManager": "yarn@4.16.0+sha256.ba05224324578801b9cc98170d64aa50b9a36733b440fb0942306da3fbbdc7d1"
 }
